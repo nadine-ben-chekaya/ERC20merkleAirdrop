@@ -76,7 +76,7 @@ describe("Merkle Airdrop Token", function () {
     // This should fail due to invalid proof
     await expect(
       token.connect(addr1).claimTokens(amount, invalidProof)
-    ).to.be.revertedWith("Invalid proof");
+    ).to.be.revertedWith("Invalid Data, verify your address,amount or proof");
   });
 
   it("4.Should reject claims for non-participants", async function () {
@@ -90,6 +90,19 @@ describe("Merkle Airdrop Token", function () {
     // This should fail because addr5 is not in the list
     await expect(
       token.connect(addr5).claimTokens(amount, proof)
-    ).to.be.revertedWith("Invalid proof");
+    ).to.be.revertedWith("Invalid Data, verify your address,amount or proof");
+  });
+  it("5.Should reject claims with wrong amount", async function () {
+    // addr5 claims (not part of the airdrop)
+    const amount = ethers.parseEther("200");
+    const leaf = ethers.solidityPackedKeccak256(
+      ["address", "uint256"],
+      [addr1.address, amount]
+    );
+    const proof = merkleTree.getHexProof(leaf);
+    // This should fail because addr5 is not in the list
+    await expect(
+      token.connect(addr1).claimTokens(amount, proof)
+    ).to.be.revertedWith("Invalid Data, verify your address,amount or proof");
   });
 });

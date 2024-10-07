@@ -26,7 +26,7 @@ contract MerkleAirdropToken is ERC20, Ownable {
         bytes32 leaf = keccak256(abi.encodePacked(msg.sender, amount));
 
         // Verify the proof
-        require(MerkleProof.verify(merkleProof, merkleRoot, leaf), "Invalid proof");
+        require(MerkleProof.verify(merkleProof, merkleRoot, leaf), "Invalid Data, verify your address,amount or proof");
 
         claimed[msg.sender] = true; // Mark as claimed
 
