@@ -1,0 +1,20 @@
+{
+  "participants": [
+    {
+      "address": "0xdC853c1E17b4f255027bE076B60E14edF13f4F2F",
+      "amount": "100000000000000000000"
+    },
+    {
+      "address": "0xCD24116571Be9b183f26a5a6788a8E3D8A7EF561",
+      "amount": "200000000000000000000"
+    },
+    {
+      "address": "0x0346446308C0F9751cE93b521dB66c49Ed992634",
+      "amount": "300000000000000000000"
+    },
+    {
+      "address": "0x1730c39Dcc0cdB04b359ebBa5f5bc4714cE4BbEb",
+      "amount": "200000000000000000000"
+    }
+  ]
+}
